@@ -1,7 +1,9 @@
+import 'dart:ui';
+
+import 'package:feather/src/data/repository/local/application_local_repository.dart';
+import 'package:feather/src/data/repository/local/location_manager.dart';
 import 'package:feather/src/data/repository/local/location_provider.dart';
 import 'package:feather/src/data/repository/local/storage_manager.dart';
-import 'package:feather/src/data/repository/local/location_manager.dart';
-import 'package:feather/src/data/repository/local/application_local_repository.dart';
 import 'package:feather/src/data/repository/local/storage_provider.dart';
 import 'package:feather/src/data/repository/local/weather_local_repository.dart';
 import 'package:feather/src/data/repository/remote/weather_api_provider.dart';
@@ -15,11 +17,20 @@ import 'package:feather/src/ui/settings/bloc/settings_screen_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:timeago/timeago.dart' as timeago;
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() => runApp(const FeatherApp());
+
+class AppScrollBehavior extends MaterialScrollBehavior {
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+    PointerDeviceKind.touch,
+    PointerDeviceKind.mouse,
+    PointerDeviceKind.trackpad
+  };
+}
 
 class FeatherApp extends StatefulWidget {
   const FeatherApp({Key? key}) : super(key: key);
@@ -44,7 +55,7 @@ class _FeatherAppState extends State<FeatherApp> {
     _weatherLocalRepository = WeatherLocalRepository(_storageManager);
     _applicationLocalRepository = ApplicationLocalRepository(_storageManager);
     WidgetsFlutterBinding.ensureInitialized();
-    SystemChrome.setEnabledSystemUIOverlays([]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     _navigation.defineRoutes();
     _configureTimeago();
   }
@@ -76,6 +87,7 @@ class _FeatherAppState extends State<FeatherApp> {
         )
       ],
       child: MaterialApp(
+        scrollBehavior: AppScrollBehavior(),
         debugShowCheckedModeBanner: false,
         navigatorKey: _navigatorKey,
         theme: _configureThemeData(),
@@ -97,11 +109,12 @@ class _FeatherAppState extends State<FeatherApp> {
   ThemeData _configureThemeData() {
     return ThemeData(
       textTheme: const TextTheme(
-        headline5: TextStyle(fontSize: 60.0, color: Colors.white),
-        headline6: TextStyle(fontSize: 35, color: Colors.white),
-        subtitle2: TextStyle(fontSize: 20, color: Colors.white),
-        bodyText2: TextStyle(fontSize: 15, color: Colors.white),
-        bodyText1: TextStyle(fontSize: 12, color: Colors.white),
+
+        headlineSmall: TextStyle(fontSize: 60.0, color: Colors.white),
+        titleLarge: TextStyle(fontSize: 35, color: Colors.white),
+        titleSmall: TextStyle(fontSize: 20, color: Colors.white),
+        bodyMedium: TextStyle(fontSize: 15, color: Colors.white),
+        bodyLarge: TextStyle(fontSize: 12, color: Colors.white),
       ),
     );
   }

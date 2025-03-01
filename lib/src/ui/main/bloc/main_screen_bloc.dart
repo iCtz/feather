@@ -4,8 +4,8 @@ import 'package:feather/src/data/model/internal/application_error.dart';
 import 'package:feather/src/data/model/internal/geo_position.dart';
 import 'package:feather/src/data/model/remote/weather_forecast_list_response.dart';
 import 'package:feather/src/data/model/remote/weather_response.dart';
-import 'package:feather/src/data/repository/local/location_manager.dart';
 import 'package:feather/src/data/repository/local/application_local_repository.dart';
+import 'package:feather/src/data/repository/local/location_manager.dart';
 import 'package:feather/src/data/repository/local/weather_local_repository.dart';
 import 'package:feather/src/data/repository/remote/weather_remote_repository.dart';
 import 'package:feather/src/ui/main/bloc/main_screen_event.dart';
@@ -32,17 +32,7 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
   @override
   Stream<MainScreenState> mapEventToState(MainScreenEvent event) async* {
     if (event is LocationCheckMainScreenEvent) {
-      yield CheckingLocationMainScreenState();
-      if (!await _checkLocationServiceEnabled()) {
-        yield LocationServiceDisabledMainScreenState();
-      } else {
-        final permissionState = await _checkPermission();
-        if (permissionState == null) {
-          yield* _selectWeatherData();
-        } else {
-          yield permissionState;
-        }
-      }
+      yield* _selectWeatherData();
     }
     if (event is LoadWeatherDataMainScreenEvent) {
       yield* _selectWeatherData();
@@ -81,7 +71,7 @@ class MainScreenBloc extends Bloc<MainScreenEvent, MainScreenState> {
   }
 
   Future<bool> _checkLocationServiceEnabled() async {
-    return _locationManager.isLocationEnabled();
+    return false;
   }
 
   Future<PermissionNotGrantedMainScreenState?> _checkPermission() async {

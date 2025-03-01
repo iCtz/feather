@@ -1,9 +1,9 @@
 import 'package:feather/src/data/model/internal/forecast_navigation_params.dart';
 import 'package:feather/src/data/model/internal/settings_navigation_params.dart';
 import 'package:feather/src/data/model/internal/weather_forecast_holder.dart';
+import 'package:feather/src/ui/about/about_screen.dart';
 import 'package:feather/src/ui/forecast/weather_forecast_screen.dart';
 import 'package:feather/src/ui/main/main_screen.dart';
-import 'package:feather/src/ui/about/about_screen.dart';
 import 'package:feather/src/ui/settings/settings_screen.dart';
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';

@@ -3,7 +3,6 @@ import 'package:feather/src/data/repository/local/weather_helper.dart';
 import 'package:feather/src/ui/navigation/bloc/navigation_bloc.dart';
 import 'package:feather/src/ui/navigation/bloc/navigation_event.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WeatherForecastThumbnailWidget extends StatefulWidget {
@@ -53,7 +52,7 @@ class _WeatherForecastThumbnailWidgetState
                 Text(holder.dateShortFormatted!,
                     key: const Key("weather_forecast_thumbnail_date"),
                     textDirection: TextDirection.ltr,
-                    style: Theme.of(context).textTheme.bodyText2),
+                    style: Theme.of(context).textTheme.bodyMedium),
                 const SizedBox(height: 4),
                 Image.asset(holder.weatherCodeAsset!,
                     key: const Key("weather_forecast_thumbnail_icon"),
@@ -67,7 +66,7 @@ class _WeatherForecastThumbnailWidgetState
                     ),
                     key: const Key("weather_forecast_thumbnail_temperature"),
                     textDirection: TextDirection.ltr,
-                    style: Theme.of(context).textTheme.bodyText2),
+                    style: Theme.of(context).textTheme.bodyMedium),
                 const SizedBox(height: 4),
               ],
             ),

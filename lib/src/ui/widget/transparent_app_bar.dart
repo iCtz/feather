@@ -1,6 +1,6 @@
 import 'package:feather/src/data/model/internal/overflow_menu_element.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TransparentAppBar extends StatelessWidget {
   final bool withPopupMenu;
@@ -18,6 +18,9 @@ class TransparentAppBar extends StatelessWidget {
       left: 0.0,
       right: 0.0,
       child: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.white, //change your color here
+        ),
         actions: <Widget>[
           if (withPopupMenu)
             Theme(

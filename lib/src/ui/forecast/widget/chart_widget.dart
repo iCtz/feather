@@ -1,10 +1,9 @@
 import 'package:feather/src/data/model/internal/chart_data.dart';
 import 'package:feather/src/data/model/internal/chart_line.dart';
 import 'package:feather/src/data/model/internal/point.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:feather/src/ui/widget/animated_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ChartWidget extends StatefulWidget {
   final ChartData? chartData;
@@ -61,15 +60,11 @@ class _ChartWidgetState extends AnimatedState<ChartWidget> {
       child: Text(
         AppLocalizations.of(context)!.chart_unavailable,
         textDirection: TextDirection.ltr,
-        style: Theme.of(context).textTheme.bodyText2,
+        style: Theme.of(context).textTheme.bodyMedium,
       ),
     );
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
 
   @override
   void onAnimatedValue(double value) {

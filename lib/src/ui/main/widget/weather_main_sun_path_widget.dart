@@ -1,13 +1,12 @@
 import 'dart:async';
 
 import 'package:feather/src/data/model/remote/system.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:feather/src/data/repository/local/weather_helper.dart';
-import 'package:feather/src/ui/widget/animated_text_widget.dart';
 import 'package:feather/src/ui/main/widget/sun_path_widget.dart';
+import 'package:feather/src/ui/widget/animated_text_widget.dart';
 import 'package:feather/src/utils/date_time_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class WeatherMainSunPathWidget extends StatefulWidget {
   final System? system;
@@ -78,7 +77,7 @@ class _WeatherMainSunPathWidgetState extends State<WeatherMainSunPathWidget> {
       Text("${applicationLocalization.sunset_in}: ${_getTimeUntilSunset()}",
           key: const Key("weather_main_sun_path_countdown"),
           textDirection: TextDirection.ltr,
-          style: Theme.of(context).textTheme.subtitle2)
+          style: Theme.of(context).textTheme.titleSmall)
     ];
   }
 
@@ -93,7 +92,7 @@ class _WeatherMainSunPathWidgetState extends State<WeatherMainSunPathWidget> {
       Text("${applicationLocalization.sunrise_in}: ${_getTimeUntilSunrise()}",
           key: const Key("weather_main_sun_path_countdown"),
           textDirection: TextDirection.ltr,
-          style: Theme.of(context).textTheme.subtitle2),
+          style: Theme.of(context).textTheme.titleSmall),
     ];
   }
 
@@ -120,13 +119,13 @@ class _WeatherMainSunPathWidgetState extends State<WeatherMainSunPathWidget> {
       Text("${applicationLocalizations.sunrise}: ${_getSunriseTime()}",
           key: const Key("weather_main_sun_path_sunrise"),
           textDirection: TextDirection.ltr,
-          style: Theme.of(context).textTheme.bodyText2),
+          style: Theme.of(context).textTheme.bodyMedium),
     );
     widgets.add(
       Text("${applicationLocalizations.sunset}: ${_getSunsetTime()}",
           key: const Key("weather_main_sun_path_sunset"),
           textDirection: TextDirection.ltr,
-          style: Theme.of(context).textTheme.bodyText2),
+          style: Theme.of(context).textTheme.bodyMedium),
     );
 
     return widgets;

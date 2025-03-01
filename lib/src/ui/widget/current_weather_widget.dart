@@ -1,14 +1,13 @@
 import 'package:feather/src/data/model/remote/overall_weather_data.dart';
 import 'package:feather/src/data/model/remote/weather_forecast_list_response.dart';
 import 'package:feather/src/data/model/remote/weather_response.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:feather/src/data/repository/local/weather_helper.dart';
 import 'package:feather/src/ui/app/app_bloc.dart';
-import 'package:feather/src/ui/widget/animated_state.dart';
 import 'package:feather/src/ui/main/widget/weather_forecast_thumbnail_list_widget.dart';
+import 'package:feather/src/ui/widget/animated_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CurrentWeatherWidget extends StatefulWidget {
   final WeatherResponse? weatherResponse;
@@ -77,12 +76,12 @@ class CurrentWeatherWidgetState extends AnimatedState<CurrentWeatherWidget> {
                   ),
                   key: const Key("weather_current_widget_temperature"),
                   textDirection: TextDirection.ltr,
-                  style: Theme.of(context).textTheme.headline5),
+                  style: Theme.of(context).textTheme.headlineSmall),
               const SizedBox(height: 32),
               Text(_getMaxMinTemperatureRow(response),
                   key: const Key("weather_current_widget_min_max_temperature"),
                   textDirection: TextDirection.ltr,
-                  style: Theme.of(context).textTheme.subtitle2),
+                  style: Theme.of(context).textTheme.titleSmall),
               const SizedBox(height: 4),
               _getPressureAndHumidityRow(response),
               const SizedBox(height: 24),
@@ -122,22 +121,22 @@ class CurrentWeatherWidgetState extends AnimatedState<CurrentWeatherWidget> {
         children: [
           TextSpan(
               text: "${applicationLocalization.pressure}: ",
-              style: Theme.of(context).textTheme.bodyText1),
+              style: Theme.of(context).textTheme.bodyLarge),
           TextSpan(
               text: WeatherHelper.formatPressure(
                   weatherResponse.mainWeatherData!.pressure,
                   _appBloc.isMetricUnits()),
-              style: Theme.of(context).textTheme.subtitle2),
+              style: Theme.of(context).textTheme.titleSmall),
           const TextSpan(
             text: "  ",
           ),
           TextSpan(
               text: "${applicationLocalization.humidity}: ",
-              style: Theme.of(context).textTheme.bodyText1),
+              style: Theme.of(context).textTheme.bodyLarge),
           TextSpan(
               text: WeatherHelper.formatHumidity(
                   weatherResponse.mainWeatherData!.humidity),
-              style: Theme.of(context).textTheme.subtitle2)
+              style: Theme.of(context).textTheme.titleSmall)
         ],
       ),
     );

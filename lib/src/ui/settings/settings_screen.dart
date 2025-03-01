@@ -1,6 +1,5 @@
 import 'package:feather/src/data/model/internal/overflow_menu_element.dart';
 import 'package:feather/src/data/model/internal/unit.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:feather/src/ui/app/app_bloc.dart';
 import 'package:feather/src/ui/app/app_event.dart';
 import 'package:feather/src/ui/settings/bloc/settings_screen_bloc.dart';
@@ -10,8 +9,8 @@ import 'package:feather/src/ui/widget/animated_gradient.dart';
 import 'package:feather/src/ui/widget/loading_widget.dart';
 import 'package:feather/src/ui/widget/transparent_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class SettingsScreen extends StatefulWidget {
@@ -91,7 +90,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               applicationLocalization, state.unit == Unit.imperial),
           Text(
             applicationLocalization.units_description,
-            style: Theme.of(context).textTheme.bodyText1,
+            style: Theme.of(context).textTheme.bodyLarge,
           ),
           const SizedBox(height: 30),
           _buildRefreshTimePickerWidget(
@@ -99,20 +98,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
           const SizedBox(height: 10),
           Text(
             applicationLocalization.refresh_time_description,
-            style: Theme.of(context).textTheme.bodyText1,
+            style: Theme.of(context).textTheme.bodyLarge,
           ),
           const SizedBox(height: 30),
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Text(
               "${applicationLocalization.last_refresh_time}:",
-              style: Theme.of(context).textTheme.subtitle2,
+              style: Theme.of(context).textTheme.titleSmall,
             ),
           ]),
           const SizedBox(height: 10),
           Text(
               "$dateTime (${timeago.format(dateTime, locale: Localizations.localeOf(context).languageCode)})",
               key: const Key("settings_screen_last_refresh_time"),
-              style: Theme.of(context).textTheme.bodyText1),
+              style: Theme.of(context).textTheme.bodyLarge),
         ],
       ),
     );
@@ -126,7 +125,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       children: [
         Text(
           "${applicationLocalization.units}:",
-          style: Theme.of(context).textTheme.subtitle2,
+          style: Theme.of(context).textTheme.titleSmall,
         ),
         Row(
           children: [
@@ -154,7 +153,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       children: [
         Text(
           "${applicationLocalization.refresh_time}:",
-          style: Theme.of(context).textTheme.subtitle2,
+          style: Theme.of(context).textTheme.titleSmall,
         ),
         Center(
           child: Row(

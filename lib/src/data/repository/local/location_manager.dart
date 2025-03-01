@@ -16,7 +16,12 @@ class LocationManager {
         return _lastPosition;
       }
       // ignore: join_return_with_assignment
-      _lastPosition = await _locationProvider.providePosition();
+      _lastPosition = Position(
+        longitude: 17.033,
+        latitude: 51.1,
+        timestamp: DateTime.now(),
+        accuracy: 0, altitude: 0, heading: 0, speed: 0, speedAccuracy: 0,
+      );
       return _lastPosition;
     } catch (exc, stackTrace) {
       Log.e("Exception occurred: $exc in $stackTrace");
@@ -28,14 +33,13 @@ class LocationManager {
     return _locationProvider.isLocationEnabled();
   }
 
-  Future<LocationPermission> checkLocationPermission() async{
+  Future<LocationPermission> checkLocationPermission() async {
     return _locationProvider.checkLocationPermission();
   }
 
-  Future<LocationPermission> requestLocationPermission() async{
+  Future<LocationPermission> requestLocationPermission() async {
     return _locationProvider.requestLocationPermission();
   }
-
 
   @visibleForTesting
   Position? get lastPosition => _lastPosition;

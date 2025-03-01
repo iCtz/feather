@@ -1,8 +1,8 @@
+import 'package:app_settings/app_settings.dart';
 import 'package:feather/src/data/model/internal/application_error.dart';
 import 'package:feather/src/data/model/internal/overflow_menu_element.dart';
 import 'package:feather/src/data/model/remote/weather_forecast_list_response.dart';
 import 'package:feather/src/data/model/remote/weather_response.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:feather/src/resources/config/application_colors.dart';
 import 'package:feather/src/resources/config/dimensions.dart';
 import 'package:feather/src/resources/config/ids.dart';
@@ -22,8 +22,10 @@ import 'package:feather/src/utils/app_logger.dart';
 import 'package:feather/src/utils/date_time_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
-import 'package:app_settings/app_settings.dart';
+
+import '../widget/transparent_app_bar.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -81,7 +83,10 @@ class _MainScreenState extends State<MainScreen> {
               );
             },
           ),
-          _buildOverflowMenu()
+          /*TransparentAppBar(
+            withPopupMenu: true,
+            onPopupMenuClicked: _onMenuElementClicked
+          )*/
         ],
       ),
     );
@@ -107,13 +112,13 @@ class _MainScreenState extends State<MainScreen> {
                 weatherResponse.name!,
                 key: const Key("main_screen_weather_widget_city_name"),
                 textDirection: TextDirection.ltr,
-                style: Theme.of(context).textTheme.headline6,
+                style: Theme.of(context).textTheme.titleLarge,
               ),
               Text(
                 DateTimeHelper.formatDateTime(DateTime.now()),
                 key: const Key("main_screen_weather_widget_date"),
                 textDirection: TextDirection.ltr,
-                style: Theme.of(context).textTheme.subtitle2,
+                style: Theme.of(context).textTheme.titleSmall,
               ),
               SizedBox(
                 height: Dimensions.weatherMainWidgetSwiperHeight,
@@ -144,7 +149,7 @@ class _MainScreenState extends State<MainScreen> {
       },
       loop: false,
       itemCount: 2,
-      pagination: SwiperPagination(
+      pagination: const SwiperPagination(
         builder: DotSwiperPaginationBuilder(
           color: ApplicationColors.swiperInactiveDotColor,
           activeColor: ApplicationColors.swiperActiveDotColor,
@@ -185,41 +190,6 @@ class _MainScreenState extends State<MainScreen> {
           ApplicationColors.nightStartColor,
           ApplicationColors.nightEndColor,
         ),
-      ),
-    );
-  }
-
-  Widget _buildOverflowMenu() {
-    return SafeArea(
-      key: const Key("main_screen_overflow_menu"),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Theme(
-            data: Theme.of(context).copyWith(cardColor: Colors.white),
-            child: PopupMenuButton<PopupMenuElement>(
-              onSelected: (PopupMenuElement element) {
-                _onMenuElementClicked(element, context);
-              },
-              icon: const Icon(
-                Icons.more_vert,
-                color: Colors.white,
-              ),
-              itemBuilder: (BuildContext context) {
-                return _getOverflowMenu(context)
-                    .map((PopupMenuElement element) {
-                  return PopupMenuItem<PopupMenuElement>(
-                    value: element,
-                    child: Text(
-                      element.title!,
-                      style: const TextStyle(color: Colors.black),
-                    ),
-                  );
-                }).toList();
-              },
-            ),
-          ),
-        ],
       ),
     );
   }
@@ -321,19 +291,7 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 
-  List<PopupMenuElement> _getOverflowMenu(BuildContext context) {
-    final applicationLocalization = AppLocalizations.of(context)!;
-    final List<PopupMenuElement> menuList = [];
-    menuList.add(PopupMenuElement(
-        key: const Key("menu_overflow_settings"),
-        title: applicationLocalization.settings));
-    menuList.add(PopupMenuElement(
-        key: const Key("menu_overflow_about"),
-        title: applicationLocalization.about));
-    return menuList;
-  }
-
-  void _onMenuElementClicked(PopupMenuElement value, BuildContext context) {
+  void _onMenuElementClicked(PopupMenuElement? value) {
     List<Color> startGradientColors = [];
     if (_mainScreenBloc.state is SuccessLoadMainScreenState) {
       final weatherResponse =
@@ -344,11 +302,12 @@ class _MainScreenState extends State<MainScreen> {
       startGradientColors = gradient.colors;
     }
 
-    if (value.key == const Key("menu_overflow_settings")) {
+    if (value?.key == const Key("menu_overflow_settings")) {
       _navigationBloc.add(SettingsScreenNavigationEvent(startGradientColors));
     }
-    if (value.key == const Key("menu_overflow_about")) {
+    if (value?.key == const Key("menu_overflow_about")) {
       _navigationBloc.add(AboutScreenNavigationEvent(startGradientColors));
     }
+
   }
 }
