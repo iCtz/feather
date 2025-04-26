@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:feather/src/data/model/internal/application_error.dart';
 import 'package:feather/src/data/model/remote/weather_forecast_list_response.dart';
@@ -14,6 +17,22 @@ class WeatherApiProvider {
   final String _apiWeatherEndpoint = "/weather";
   final String _apiWeatherForecastEndpoint = "/forecast";
   final Dio _dio = Dio();
+
+  WeatherApiProvider() {
+    // Disable SSL verification (for debugging purposes only)
+    (_dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+        (HttpClient client) {
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+      client.findProxy = (Uri url) {
+        return "PROXY 172.31.240.40:8090;"; // Example: "PROXY 192.168.1.100:8888;"
+      };
+      return client;
+    };
+
+    // Add interceptors for logging
+    setupInterceptors();
+  }
 
   Future<WeatherResponse> fetchWeather(
       double? latitude, double? longitude) async {

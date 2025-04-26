@@ -44,15 +44,15 @@ class WeatherForecastRainPage extends WeatherForecastBasePage {
       textDirection: TextDirection.ltr,
       text: TextSpan(
         children: [
-          TextSpan(text: 'min ', style: Theme.of(context).textTheme.bodyText1),
+          TextSpan(text: 'min ', style: Theme.of(context).textTheme.bodyMedium),
           TextSpan(
               text: WeatherHelper.formatRain(holder!.minRain!),
-              style: Theme.of(context).textTheme.subtitle2),
+              style: Theme.of(context).textTheme.titleSmall),
           TextSpan(
-              text: '   max ', style: Theme.of(context).textTheme.bodyText1),
+              text: '   max ', style: Theme.of(context).textTheme.bodyMedium),
           TextSpan(
               text: WeatherHelper.formatRain(holder!.maxRain!),
-              style: Theme.of(context).textTheme.subtitle2)
+              style: Theme.of(context).textTheme.titleSmall)
         ],
       ),
     );

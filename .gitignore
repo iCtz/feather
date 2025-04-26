@@ -17,3 +17,9 @@ android/.gradle
 .flutter-plugins
 *.lock
 *.lock
+
+.flutter-plugins-dependencies
+android/.kotlin/
+android/app/.cxx/
+android/app/src/main/java/io/
+ios/Flutter/flutter_export_environment.sh

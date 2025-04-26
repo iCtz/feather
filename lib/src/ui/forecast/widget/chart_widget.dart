@@ -61,7 +61,7 @@ class _ChartWidgetState extends AnimatedState<ChartWidget> {
       child: Text(
         AppLocalizations.of(context)!.chart_unavailable,
         textDirection: TextDirection.ltr,
-        style: Theme.of(context).textTheme.bodyText2,
+        style: Theme.of(context).textTheme.bodyLarge,
       ),
     );
   }

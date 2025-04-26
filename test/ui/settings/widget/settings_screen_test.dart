@@ -34,7 +34,8 @@ void main() {
           const SettingsScreen(),
         ),
       ),
-      const Duration(seconds: 2),
+      // const Duration(seconds: 2),
+      duration: const Duration(seconds: 2),
     );
 
     expect(find.byKey(const Key("settings_screen_container")), findsOneWidget);

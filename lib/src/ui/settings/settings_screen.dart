@@ -91,7 +91,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               applicationLocalization, state.unit == Unit.imperial),
           Text(
             applicationLocalization.units_description,
-            style: Theme.of(context).textTheme.bodyText1,
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
           const SizedBox(height: 30),
           _buildRefreshTimePickerWidget(
@@ -99,20 +99,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
           const SizedBox(height: 10),
           Text(
             applicationLocalization.refresh_time_description,
-            style: Theme.of(context).textTheme.bodyText1,
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
           const SizedBox(height: 30),
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Text(
               "${applicationLocalization.last_refresh_time}:",
-              style: Theme.of(context).textTheme.subtitle2,
+              style: Theme.of(context).textTheme.titleSmall,
             ),
           ]),
           const SizedBox(height: 10),
           Text(
               "$dateTime (${timeago.format(dateTime, locale: Localizations.localeOf(context).languageCode)})",
               key: const Key("settings_screen_last_refresh_time"),
-              style: Theme.of(context).textTheme.bodyText1),
+              style: Theme.of(context).textTheme.bodyMedium),
         ],
       ),
     );
@@ -126,7 +126,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       children: [
         Text(
           "${applicationLocalization.units}:",
-          style: Theme.of(context).textTheme.subtitle2,
+          style: Theme.of(context).textTheme.titleSmall,
         ),
         Row(
           children: [
@@ -154,7 +154,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       children: [
         Text(
           "${applicationLocalization.refresh_time}:",
-          style: Theme.of(context).textTheme.subtitle2,
+          style: Theme.of(context).textTheme.titleSmall,
         ),
         Center(
           child: Row(

@@ -107,13 +107,13 @@ class _MainScreenState extends State<MainScreen> {
                 weatherResponse.name!,
                 key: const Key("main_screen_weather_widget_city_name"),
                 textDirection: TextDirection.ltr,
-                style: Theme.of(context).textTheme.headline6,
+                style: Theme.of(context).textTheme.titleLarge,
               ),
               Text(
                 DateTimeHelper.formatDateTime(DateTime.now()),
                 key: const Key("main_screen_weather_widget_date"),
                 textDirection: TextDirection.ltr,
-                style: Theme.of(context).textTheme.subtitle2,
+                style: Theme.of(context).textTheme.titleSmall,
               ),
               SizedBox(
                 height: Dimensions.weatherMainWidgetSwiperHeight,

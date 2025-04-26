@@ -15,7 +15,8 @@ void main() {
           const AboutScreen(),
         ),
       ),
-      const Duration(seconds: 2),
+      // const Duration(seconds: 2),
+        duration: const Duration(seconds: 2),
     );
 
     expect(find.byKey(const Key("about_screen_logo")), findsOneWidget);

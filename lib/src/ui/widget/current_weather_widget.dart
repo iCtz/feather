@@ -77,12 +77,12 @@ class CurrentWeatherWidgetState extends AnimatedState<CurrentWeatherWidget> {
                   ),
                   key: const Key("weather_current_widget_temperature"),
                   textDirection: TextDirection.ltr,
-                  style: Theme.of(context).textTheme.headline5),
+                  style: Theme.of(context).textTheme.displaySmall),
               const SizedBox(height: 32),
               Text(_getMaxMinTemperatureRow(response),
                   key: const Key("weather_current_widget_min_max_temperature"),
                   textDirection: TextDirection.ltr,
-                  style: Theme.of(context).textTheme.subtitle2),
+                  style: Theme.of(context).textTheme.titleSmall),
               const SizedBox(height: 4),
               _getPressureAndHumidityRow(response),
               const SizedBox(height: 24),
@@ -122,22 +122,22 @@ class CurrentWeatherWidgetState extends AnimatedState<CurrentWeatherWidget> {
         children: [
           TextSpan(
               text: "${applicationLocalization.pressure}: ",
-              style: Theme.of(context).textTheme.bodyText1),
+              style: Theme.of(context).textTheme.bodyMedium),
           TextSpan(
               text: WeatherHelper.formatPressure(
                   weatherResponse.mainWeatherData!.pressure,
                   _appBloc.isMetricUnits()),
-              style: Theme.of(context).textTheme.subtitle2),
+              style: Theme.of(context).textTheme.titleSmall),
           const TextSpan(
             text: "  ",
           ),
           TextSpan(
               text: "${applicationLocalization.humidity}: ",
-              style: Theme.of(context).textTheme.bodyText1),
+              style: Theme.of(context).textTheme.bodyMedium),
           TextSpan(
               text: WeatherHelper.formatHumidity(
                   weatherResponse.mainWeatherData!.humidity),
-              style: Theme.of(context).textTheme.subtitle2)
+              style: Theme.of(context).textTheme.titleSmall)
         ],
       ),
     );

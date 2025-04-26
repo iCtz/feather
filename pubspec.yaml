@@ -4,28 +4,40 @@ version: 2.0.0
 publish_to: none
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: '>=2.12.0 <3.29.3'
 
 dependencies:
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  intl: ^0.17.0
+#  intl: ^0.17.0
+  intl: ^0.19.0
   flutter_bloc: ^7.0.0
   equatable: ^2.0.0
-  geolocator: ^7.0.3
+#  geolocator: ^7.0.3
+  geolocator: ^9.0.0
   dio: ^4.0.0
   logger: ^1.0.0
   flutter_swiper_null_safety:
     git: https://github.com/lianyagang/flutter_swiper_null_safety.git
-  shared_preferences: ^2.0.5
-  package_info: ^2.0.0
-  url_launcher: ^6.0.3
+#  shared_preferences: ^2.0.5
+#  shared_preferences: ^2.3.5
+  shared_preferences: ^2.5.3
+#  package_info: ^2.0.0
+#  package_info_plus: ^1.4.3+1
+  package_info_plus: ^4.1.0
+#  url_launcher: ^6.0.3
+  url_launcher: ^6.2.0
   pretty_dio_logger: ^1.2.0-beta-1
-  fluro: ^2.0.3
+#  fluro: ^2.0.3
+  fluro:
+    git:
+      url: https://github.com/lukepighetti/fluro.git  # Note .git extension
+      ref: main
   timeago: ^3.0.2
-  app_settings: 4.1.0
+  app_settings: ^5.2.0
+#  app_settings: 4.1.0
 
 dev_dependencies:
   flutter_test:
@@ -36,6 +48,8 @@ dev_dependencies:
   mockito: ^5.0.9
   build_runner: ^2.0.4
   http_mock_adapter: ^0.2.1
+  file: ^7.0.0
+  platform: ^3.1.0
 
 
 flutter:

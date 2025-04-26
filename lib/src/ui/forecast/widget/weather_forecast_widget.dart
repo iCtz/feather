@@ -65,13 +65,13 @@ class WeatherForecastWidget extends StatelessWidget {
             holder!.getLocationName(context)!,
             textDirection: TextDirection.ltr,
             key: const Key("weather_forecast_location_name"),
-            style: Theme.of(context).textTheme.headline6,
+            style: Theme.of(context).textTheme.titleLarge,
           ),
           Text(
             holder!.dateFullFormatted!,
             textDirection: TextDirection.ltr,
             key: const Key("weather_forecast_date_formatted"),
-            style: Theme.of(context).textTheme.subtitle2,
+            style: Theme.of(context).textTheme.titleSmall,
           ),
           const SizedBox(height: 20),
           SizedBox(

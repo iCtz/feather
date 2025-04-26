@@ -78,7 +78,7 @@ class _WeatherMainSunPathWidgetState extends State<WeatherMainSunPathWidget> {
       Text("${applicationLocalization.sunset_in}: ${_getTimeUntilSunset()}",
           key: const Key("weather_main_sun_path_countdown"),
           textDirection: TextDirection.ltr,
-          style: Theme.of(context).textTheme.subtitle2)
+          style: Theme.of(context).textTheme.titleSmall)
     ];
   }
 
@@ -93,7 +93,7 @@ class _WeatherMainSunPathWidgetState extends State<WeatherMainSunPathWidget> {
       Text("${applicationLocalization.sunrise_in}: ${_getTimeUntilSunrise()}",
           key: const Key("weather_main_sun_path_countdown"),
           textDirection: TextDirection.ltr,
-          style: Theme.of(context).textTheme.subtitle2),
+          style: Theme.of(context).textTheme.titleSmall),
     ];
   }
 
@@ -120,13 +120,13 @@ class _WeatherMainSunPathWidgetState extends State<WeatherMainSunPathWidget> {
       Text("${applicationLocalizations.sunrise}: ${_getSunriseTime()}",
           key: const Key("weather_main_sun_path_sunrise"),
           textDirection: TextDirection.ltr,
-          style: Theme.of(context).textTheme.bodyText2),
+          style: Theme.of(context).textTheme.bodyLarge),
     );
     widgets.add(
       Text("${applicationLocalizations.sunset}: ${_getSunsetTime()}",
           key: const Key("weather_main_sun_path_sunset"),
           textDirection: TextDirection.ltr,
-          style: Theme.of(context).textTheme.bodyText2),
+          style: Theme.of(context).textTheme.bodyLarge),
     );
 
     return widgets;

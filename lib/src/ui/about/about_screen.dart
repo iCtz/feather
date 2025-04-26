@@ -7,7 +7,7 @@ import 'package:feather/src/ui/widget/transparent_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:package_info/package_info.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AboutScreen extends StatefulWidget {
@@ -68,18 +68,18 @@ class _AboutScreenState extends State<AboutScreen> {
           _buildLogoWidget(),
           Text("feather",
               key: const Key("about_screen_app_name"),
-              style: Theme.of(context).textTheme.headline6),
+              style: Theme.of(context).textTheme.titleLarge),
           _buildVersionWidget(),
           const SizedBox(height: 20),
           Text("${applicationLocalization.contributors}:",
               key: const Key("about_screen_contributors"),
-              style: Theme.of(context).textTheme.subtitle2),
+              style: Theme.of(context).textTheme.titleSmall),
           const SizedBox(height: 10),
           const Text("Jakub Homlala (jhomlala)"),
           const SizedBox(height: 20),
           Text("${applicationLocalization.credits}:",
               key: const Key("about_screen_credits"),
-              style: Theme.of(context).textTheme.subtitle2),
+              style: Theme.of(context).textTheme.titleSmall),
           const SizedBox(height: 10),
           Text(applicationLocalization.weather_data),
           const SizedBox(height: 2),
@@ -113,7 +113,7 @@ class _AboutScreenState extends State<AboutScreen> {
         if (snapshot.hasData) {
           return Text(snapshot.data!,
               key: const Key("about_screen_app_version_and_build"),
-              style: Theme.of(context).textTheme.subtitle2);
+              style: Theme.of(context).textTheme.titleSmall);
         } else {
           return Container(
             key: const Key("about_screen_app_version_and_build"),

@@ -36,7 +36,7 @@ class WeatherForecastWindPage extends WeatherForecastBasePage {
             child: Center(
               child: Text(direction,
                   textDirection: TextDirection.ltr,
-                  style: Theme.of(context).textTheme.bodyText1),
+                  style: Theme.of(context).textTheme.bodyMedium),
             ),
           ),
         );
@@ -82,15 +82,15 @@ class WeatherForecastWindPage extends WeatherForecastBasePage {
       textDirection: TextDirection.ltr,
       text: TextSpan(
         children: [
-          TextSpan(text: 'min ', style: Theme.of(context).textTheme.bodyText1),
+          TextSpan(text: 'min ', style: Theme.of(context).textTheme.bodyMedium),
           TextSpan(
               text: WeatherHelper.formatWind(minWind, isMetricUnits),
-              style: Theme.of(context).textTheme.subtitle2),
+              style: Theme.of(context).textTheme.titleSmall),
           TextSpan(
-              text: '   max ', style: Theme.of(context).textTheme.bodyText1),
+              text: '   max ', style: Theme.of(context).textTheme.bodyMedium),
           TextSpan(
               text: WeatherHelper.formatWind(maxWind, isMetricUnits),
-              style: Theme.of(context).textTheme.subtitle2)
+              style: Theme.of(context).textTheme.titleSmall)
         ],
       ),
     );

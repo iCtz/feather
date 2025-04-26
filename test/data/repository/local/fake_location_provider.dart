@@ -23,7 +23,9 @@ class FakeLocationProvider extends LocationProvider {
         heading: 0.0,
         floor: 0,
         speed: 0.0,
-        speedAccuracy: 0.0);
+        speedAccuracy: 0.0,
+        altitudeAccuracy: 0.0,
+        headingAccuracy: 0.0);
   }
 
   @override

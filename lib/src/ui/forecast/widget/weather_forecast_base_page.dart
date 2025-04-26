@@ -52,7 +52,7 @@ abstract class WeatherForecastBasePage extends StatelessWidget {
     return Text(getTitleText(context)!,
         key: const Key("weather_forecast_base_page_title"),
         textDirection: TextDirection.ltr,
-        style: Theme.of(context).textTheme.subtitle2);
+        style: Theme.of(context).textTheme.titleSmall);
   }
 
   String getIcon();
