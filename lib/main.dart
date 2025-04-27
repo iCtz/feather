@@ -99,15 +99,15 @@ class _FeatherAppState extends State<FeatherApp> {
     return ThemeData(
       textTheme: const TextTheme(
         // headline5: TextStyle(fontSize: 60.0, color: Colors.white),
-        displaySmall: TextStyle(fontSize: 60.0, color: Colors.white),
+        headlineSmall: TextStyle(fontSize: 60.0, color: Colors.white),
         // headline6: TextStyle(fontSize: 35, color: Colors.white),
         titleLarge: TextStyle(fontSize: 35, color: Colors.white),
         // subtitle2: TextStyle(fontSize: 20, color: Colors.white),
         titleSmall: TextStyle(fontSize: 20, color: Colors.white),
         // bodyText2: TextStyle(fontSize: 15, color: Colors.white),
-        bodyLarge: TextStyle(fontSize: 15, color: Colors.white),
+        bodyMedium: TextStyle(fontSize: 15, color: Colors.white),
         // bodyText1: TextStyle(fontSize: 12, color: Colors.white),
-        bodyMedium: TextStyle(fontSize: 12, color: Colors.white),
+        bodyLarge: TextStyle(fontSize: 12, color: Colors.white),
       ),
     );
   }
